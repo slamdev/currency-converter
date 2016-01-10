@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Registration</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form class="form-signin" th:action="@{/(form)}" th:object="${user}" action="#" method="post">
+        <h2 class="form-signin-heading">Please register</h2>
+
+        <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required"
+                   autofocus="autofocus" th:field="*{email}"/>
+            <small th:each="error : ${#fields.errors('email')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required"
+                   th:field="*{password}"/>
+            <small th:each="error : ${#fields.errors('password')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'has-error'">
+            <label for="inputDateOfBirth" class="sr-only">Date of birth</label>
+            <input type="text" id="inputDateOfBirth" class="form-control" placeholder="Date of birth"
+                   required="required" th:field="*{dateOfBirth}"/>
+            <small th:each="error : ${#fields.errors('dateOfBirth')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('countryCode')} ? 'has-error'">
+            <label for="inputCountryCode" class="sr-only">Country</label>
+            <input type="text" id="inputCountryCode" class="form-control" placeholder="Country" required="required"
+                   th:field="*{countryCode}"/>
+            <small th:each="error : ${#fields.errors('countryCode')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('city')} ? 'has-error'">
+            <label for="inputCity" class="sr-only">City</label>
+            <input type="text" id="inputCity" class="form-control" placeholder="City" required="required"
+                   th:field="*{city}"/>
+            <small th:each="error : ${#fields.errors('city')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('street')} ? 'has-error'">
+            <label for="inputStreet" class="sr-only">Street</label>
+            <input type="text" id="inputStreet" class="form-control" placeholder="Street" required="required"
+                   th:field="*{street}"/>
+            <small th:each="error : ${#fields.errors('street')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('zipCode')} ? 'has-error'">
+            <label for="inputZipCode" class="sr-only">Zip code</label>
+            <input type="text" id="inputZipCode" class="form-control last" placeholder="Zip code" required="required"
+                   th:field="*{zipCode}"/>
+            <small th:each="error : ${#fields.errors('zipCode')}" th:text="${error}" class="help-block"></small>
+        </div>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register"/>
+    </form>
+</div>
+</body>
+</html>
